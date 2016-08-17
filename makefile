@@ -5,7 +5,7 @@ CSS_FILE = $(CSS_DIR)/main.css
 CSS_REV = main-$(shell md5 -r $(WORKDIR)/$(CSS_FILE) | awk '{print $$1}').css
 
 server:
-	hugo server --theme=axcoto --buildDrafts --watch
+	hugo server --theme=yeo --buildDrafts --watch
 
 asset:
 	cp $(CSS_FILE) "$(CSS_DIR)/main-$(shell md5 -r $(CSS_FILE) | awk '{print $$1}').css"
@@ -13,12 +13,12 @@ asset:
 	find public -name "*.html" -print0 | xargs -0 -I filename /bin/bash -c "echo filename; sed 's/css\/main.css/css\/$(CSS_REV)/g' filename > tmp; mv tmp filename"
 
 generate:
-	hugo --theme=axcoto
+	hugo --theme=yeo
 
 build: generate asset
 
 build_draft:
-	hugo --theme=axcoto --buildDrafts
+	hugo --theme=yeo --buildDrafts
 
 add_subtree:
 	git subtree add --prefix=public origin public --squash
@@ -32,4 +32,4 @@ push_subtree:
 deploy: push_subtree
 
 ssh_deploy:
-	ssh kurei@noty "bash deploy-axcoto.sh"
+	ssh kurei@noty "bash deploy-yeo.sh"
