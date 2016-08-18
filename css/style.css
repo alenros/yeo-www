@@ -36,12 +36,12 @@ h1, h2, h3, h4 {
   font-weight: 300; }
 
 a {
-  color: #FFFFFF; }
+  color: #111; }
   a i {
-    color: #FFFFFF; }
+    color: #111; }
   a:hover {
-    color: #FFFFFF;
-    text-decoration: none; }
+    color: #000;
+    text-decoration: underline; }
 
 input, textarea {
   font-weight: 300;
@@ -278,7 +278,10 @@ section.alt {
   .head h1, .head h2 {
     color: #FFFFFF; }
   .head h1 {
-    font-size: 140px; }
+    font-size: 160px; 
+    font-weight: 400;
+    color: #dcdde2;
+    }
     .head h1 span {
       padding: 0px 60px;
       border: 5px solid #FFFFFF; }
