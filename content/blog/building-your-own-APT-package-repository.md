@@ -4,7 +4,7 @@ draft = true
 title = "Building your own APT package repository"
 
 description = "Let's go over creating your own apt repository so that people can pull and install software from it"
-img = "bot.jpg"
+img = "apt.jpg"
 author = "vinh"
 +++
 
