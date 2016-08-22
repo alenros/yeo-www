@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+
+
+ <html class="" lang="en"> 
+<head>
+         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Yeo Space</title>
+        <meta name="keyword" content="">
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta http-equiv="cleartype" content="on">
+
+        
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale = 1.0">
+        
+        <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+        
+        
+        <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/vendor/elegant_font/style.css" />
+
+        <link rel="stylesheet" href="/vendor/flexslider/flexslider.css" />
+        <link rel="stylesheet" href="/vendor/prettyphoto/css/prettyPhoto.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+
+        
+
+        <script src="/js/jquery.min.js?v=1"></script>
+
+</head>
+    <body>
+        
+        
+<header id="head" class="head no-padding">
+    
+    <img class="hidden-xs big-header" src="/img/background/a.jpg?v=1">
+    <img class="visible-xs big-header" src="/img/background/a_phone.jpg?v=2">
+
+    <div class="content-wrap">
+         <h1>
+           
+           Your virtual DevOps team<br />
+        </h1>
+    </div>
+    
+    <div class="hint">
+        <a href="">
+            <img src="/img/background/arrow.png">
+        </a>
+    </div>
+    <div class="background"></div>
+</header>
+<div id="menu">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-content">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    Yeo Space
+                </a>
+            </div>
+
+            
+            <div class="collapse navbar-collapse" id="menu-content">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#service">Services</a></li>
+                    <li><a href="#project">Portfolio</a></li>
+                    <li><a href="#testimonial">Testimonial</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+<section class="wrapper">
+
+<div>
+  <h1 id="title">
+    <span><a href="https://yeo.space/blog/infrastructure-bot/">Bulding infrastructure bot</a> </span>
+  </h1>
+  <p>
+  <a href="/">Vinh</a> -&nbsp;
+  <time class="pull-right post-list">Fri, Aug 19, 2016</time>&nbsp;
+  
+  
+  <a href="/tags/hugo">hugo</a>
+  
+  <a href="/tags/asset">asset</a>
+  
+  <a href="/tags/perf">perf</a>
+  
+  </p>
+
+  <section>
+  
+
+<p>Using bot as a tool to trigger command is very convenience. We don&rsquo;t
+have to get on the VPN, SSH into servers and run commands. By using a
+bot like an UI, it&rsquo;s quick to get something. If yon are on the road and
+want o check some status, it&rsquo;s faster to type something itno Slack. It
+does, however, raise some concern about security. Hence we can limit to
+some commands to only allow from some users. But that&rsquo;s out of scope of
+this post.</p>
+
+<p>In this, we are introducing <a href="https://github.com/NotyIm/bot-slack">Infra
+Bot</a>, a tool that let you define
+command and run from Slack. It&rsquo;s written in Elixir so you will need
+Elixir. Simply follow
+<a href="http://elixir-lang.org/install.html#unix-and-unix-like">this</a> to
+install it.</p>
+
+<p>After you are done, let&rsquo;s deploy our bot.</p>
+
+<h2 id="getting-slack-credential:67c7b4ccfb6d4b5267f221c8a0e32ca9">Getting slack credential</h2>
+
+<p>Create a slack app to get client and secret token. Make sure you enable
+the bot and interactive button. The url of its is
+[domain_where_you_deploy_bot]/button</p>
+
+<h2 id="setting-environment-variables:67c7b4ccfb6d4b5267f221c8a0e32ca9">Setting environment variables</h2>
+
+<p>The bot needs those:</p>
+
+<pre><code>export SLACK_CLIENT_ID=id
+export SLACK_CLIENT_SECRET=secret
+export BOT_PREFIX=[trigger_word]
+export MDBDB=mysqldb_name
+export MDBHOST=db_host
+export MDBUSER=root
+export MDBPASSWORD=root
+</code></pre>
+
+<p>The <strong>BOT_PREFIX</strong> is a trigger word so when you type <code>bot do this for
+me</code>.</p>
+
+<h2 id="define-command:67c7b4ccfb6d4b5267f221c8a0e32ca9">Define command</h2>
+
+<p>Create a file call <code>config/command.exs</code> with this content:</p>
+
+<pre><code>use Mix.Config
+
+config :infra_bot, :command_runner,
+  [
+    {&quot;my_action&quot;,
+      %{
+        trigger: ~r/^vinh (.*)/,
+        regex:
+~r/vinh\s*(?&lt;resource&gt;.*)(for|of|on)\s*(?&lt;client&gt;[^\s]+)/,
+        command: %{
+          sub_action: %{
+            text: &quot;sub action&quot;,
+            cmd: &quot;script_to_be_run&quot;,
+            args: [&quot;client&quot;, &quot;resource&quot;],
+          },
+        }
+      }
+    },
+
+  ]
+</code></pre>
+
+<p>You can define a regex using capture name and pass them via <strong>args</strong>
+parameters. When you send a message with that pattern, the bot parse it
+to get parameter, and invoke the script in command with passing
+parameters.</p>
+
+<p>Example, I can have this:</p>
+
+<pre><code>use Mix.Config
+
+config :infra_bot, :command_runner,
+  [
+    {&quot;server_metric&quot;,
+      %{
+        trigger: ~r/^bot (.*)/,
+        regex:
+~r/bot\s*(?&lt;metric&gt;.*)(for|of|on)\s*(?&lt;server&gt;[^\s]+)/,
+        command: %{
+          sub_action: %{
+            text: &quot;shutdown &quot;,
+            cmd: &quot;&quot;,
+            args: [&quot;client&quot;, &quot;resource&quot;],
+          },
+        }
+      }
+    },
+
+  ]
+</code></pre>
+
+<h2 id="run-the-app:67c7b4ccfb6d4b5267f221c8a0e32ca9">Run the app</h2>
+
+<p>After configuring and have setting ready, you can run it like:</p>
+
+<pre><code>source ./env  # to get env var
+MIX_ENV=production mix phoenix.server
+</code></pre>
+
+<h2 id="connect-the-bot:67c7b4ccfb6d4b5267f221c8a0e32ca9">Connect the bot</h2>
+
+<p>Go to [your_domain]:[port]/auth/1, you will be redirec to slack to
+install your own bot. Once that&rsquo;s done, you can go to slack and should
+see it online. Now, command it to do thing</p>
+
+  </section>
+</div>
+
+</section>
+
+ 
+<section id="contact" class="contact alt">
+    <div class="container">
+        <div class="row sec-header">
+    <div class="col-sm-6 col-sm-offset-3">
+        <i class="icon_phone"></i>
+        <h2>
+            Get in touch        </h2>
+        
+        <div class="sep"></div>
+        
+                <h3 class="sub-title">
+            Fore more information related to our team & products, please contact us by phone, email or via our social network. Thank you.        </h3>
+            </div>
+</div>
+
+    </div>
+    
+    <div class="con-wrap">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-4 item">
+                    <h3>Yeo Space</h3>
+                    <p>
+                    We build reliable infrastructure, and use a comprehensive in-house tools to help
+                    you monitor and trigger self healing if possible.
+                    </p>
+
+                    <ul>
+                        <li><i class="icon_house"></i>San Jose, CA</li>
+                        <li><a href="mailto:hello@yeo.space?subject=Hey, just some quick catchup"><i class="icon_mail"></i>hello@yeo.space</a></li>
+                    </ul>
+                  </div>
+
+                <div class="col-sm-8 item">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/yeospace">Open source</a></li>
+                </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+        <script src="vendor/flexslider/jquery.flexslider.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/jquery-scrollto.js"></script>
+        <script src="vendor/prettyphoto/js/jquery.prettyPhoto.js"></script>
+        <script src="vendor/jquery.animateNumber.min.js"></script>
+        <script src="vendor/imagesloaded.pkgd.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+  </html>
+
