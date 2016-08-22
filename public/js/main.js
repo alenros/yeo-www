@@ -17,8 +17,6 @@ var layout =  {
 		this.initPortfolioGallery();
 		this.initEmphasizeSec();
 		this.initTestimonial();
-		this.initMap();
-		this.initVideo();
 		this.initHead();
 	},
 	initHead : function() {
@@ -85,48 +83,6 @@ var layout =  {
 				duration: 1000,
 			});
 		});
-	},
-	initVideo : function() {
-		$('#myModal').on('hidden.bs.modal', function (e) {
-			player.stopVideo();
-		});
-		$('#myModal').on('shown.bs.modal', function (e) {
-			resizeVideoModal($('#myModal'));
-		});
-		$(window).resize(function(){
-			resizeVideoModal($('#myModal'));
-		});
-	},
-	initMap : function() {
-		var latVal = parseFloat($('#map').attr('data-lat'));	
-		var lngVal = parseFloat($('#map').attr('data-lng'));
-            var latlng = {lat : latVal, lng : lngVal};
-	  
-	    // Map Options
-	    var myOptions = {
-	            zoom: 15,
-	            center: latlng,
-	            mapTypeId: google.maps.MapTypeId.ROADMAP,
-	            disableDefaultUI: true,
-	            scrollwheel: false,
-	    };
-
-	    var map = new google.maps.Map(document.getElementById('map_content'), myOptions);
-	    var markerSecond = new google.maps.Marker({
-	        position: latlng,
-	        map: map,
-	    });
-
-	    $(window).resize(function(){
-			map.setCenter(markerSecond.getPosition());  
-	    });
-	    $('.map .backdrop').click(function(e){
-	    	$('.map').addClass('show');
-	    	setTimeout(function(){
-	    		google.maps.event.trigger(map, "resize");
-	    		map.setCenter(markerSecond.getPosition());  
-	    	},600)
-	    });
 	},
 	initTestimonial : function() {
 		$('.testimonial .flexslider').flexslider({
