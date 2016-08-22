@@ -1,8 +1,11 @@
 +++
 date = "2016-08-19T18:29:11-07:00"
 draft = true
-title = "Infrastructure bot"
+title = "Bulding infrastructure bot"
 
+description = "Why do we have to login to the VPN to view server infrastrucure status, or open NewRelic app? Let's build a bot that can answer our question about server stats, asking question about server cost, traffic..."
+img = "b.jpg"
+author = "vinh"
 +++
 
 Using bot as a tool to trigger command is very convenience. We don't
