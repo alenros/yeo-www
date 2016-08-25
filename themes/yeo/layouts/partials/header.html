@@ -39,6 +39,7 @@
     <body>
         
         
+{{ if eq .Title .Site.Title }}
 <header id="head" class="head no-padding">
     
     <img class="hidden-xs big-header" src="/img/background/a.jpg?v=1">
@@ -49,8 +50,7 @@
            <!--<img src="/img/header_typo.png" alt="New Line - Template of your bussiness">-->
            Your virtual DevOps team<br />
         </h1>
-    </div>
-    
+      </div>
     <div class="hint">
         <a href="">
             <img src="/img/background/arrow.png">
@@ -58,6 +58,25 @@
     </div>
     <div class="background"></div>
 </header>
+{{ else }}
+<!--
+<header id="head" class="head no-padding">
+    <img class="big-header" src="/img/blog/{{ .Params.big }}">
+
+    <div class="content-wrap">
+         <h1>
+           {{ .Title }}
+        </h1>
+      </div>
+    <div class="hint">
+        <a href="">
+            <img src="/img/background/arrow.png">
+        </a>
+    </div>
+    <div class="background"></div>
+    </header>
+-->
+{{ end }}
 <div id="menu">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
