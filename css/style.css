@@ -726,4 +726,7 @@ section.alt {
     vertical-align: middle;
     /* vertical alignment of the inline element */ }
 
+.blog h2 {
+  text-align: left;
+}
 /*# sourceMappingURL=style.css.map */
