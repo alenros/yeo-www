@@ -1,3 +1,9 @@
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #000000;
+  font-size: 2em;
+  font-weight: 300; }
+
 .wrapper {
   margin: 100px 0;
 }
@@ -6,7 +12,8 @@ footer {
   text-align: left;
   background: #393939;
   padding: 56px 0;
-  color: #FFFFFF; }
+  font-size: 1em;
+  color: rgba(229,229,229,0.6); }
 
 footer h1, footer h2, footer h3, footer h4  {
   color: rgba(229,229,229,0.6)
@@ -40,12 +47,6 @@ footer a {
 :-ms-input-placeholder {
   color: #959595; }
 
-body {
-  font-family: "Roboto Condensed", sans-serif;
-  color: #000000;
-  font-family: 14px;
-  font-weight: 300; }
-
 i {
   color: #959595; }
 
@@ -60,12 +61,10 @@ h1, h2, h3, h4 {
   color: #000000;
   font-weight: 300; }
 
-a {
-  color: #111; }
+a { color: #111; }
   a i {
     color: #111; }
   a:hover {
-    color: #000;
     text-decoration: underline; }
 
 input, textarea {
@@ -97,72 +96,6 @@ article {
 img {
   display: block;
   width: 100%; }
-
-#menu {
-  width: 100%; }
-  #menu nav {
-    border: medium none;
-    background: transparent;
-    margin-bottom: 0px; }
-    #menu nav.navbar {
-      padding: 0px 0px;
-      border-radius: 0; }
-    #menu nav.navbar-fixed-top {
-      background: #FFFFFF;
-      border-bottom: 1px solid #959595; }
-    #menu nav a {
-      color: #000000;
-      font-weight: 400;
-      font-size: 16px;
-      text-transform: uppercase; }
-    #menu nav li {
-      padding: 7px 0px 0px; }
-      #menu nav li.active {
-        border-top: 5px solid #000000;
-        padding-top: 5px; }
-        #menu nav li.active a {
-          background-color: transparent; }
-  #menu .navbar-header {
-    margin: 5px 0px; }
-  #menu .navbar-brand {
-    padding: 12px 0px 0px 15px; }
-    #menu .navbar-brand img {
-      width: 200px;
-      float: left;
-      margin-top: -10px;
-      margin-right: 10px; }
-    #menu .navbar-brand span {
-      float: left;
-      display: block;
-      font-size: 48px;
-      font-weight: 300; }
-    #menu .navbar-brand > li > a {
-      line-height: 15px; }
-
-@media all and (max-width: 767px) {
-  #menu .nav a {
-    color: #FFFFFF; }
-  #menu .nav li.active {
-    padding: 10px 0px;
-    border-top: medium none; }
-  #menu .navbar-brand {
-    padding-left: 0px; }
-    #menu .navbar-brand img {
-      width: 200px;
-      float: left;
-      margin-top: -4px; }
-    #menu .navbar-brand span {
-      font-size: 35px; }
-  #menu #menu-content {
-    background: #393939; } }
-@media all and (min-width: 768px) and (max-width: 991px) {
-  #menu .navbar-brand span {
-    display: none; }
-  #menu .container {
-    max-width: none;
-    padding-right: 0px;
-    padding-left: 0px; } }
-
 
 html.js.csstransforms .feature .item {
   opacity: 0; }
