@@ -3,23 +3,7 @@
   
   <url>
     <loc>https://yeo.space/</loc>
-    <lastmod>2016-08-21T18:15:36-07:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yeo.space/blog/building-your-own-APT-package-repository/</loc>
-    <lastmod>2016-08-21T18:15:36-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yeo.space/blog/free-ssl-for-private-ip/</loc>
-    <lastmod>2016-08-20T20:19:26-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yeo.space/blog/infrastructure-bot/</loc>
-    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
   </url>
   
 </urlset>
