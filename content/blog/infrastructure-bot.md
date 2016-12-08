@@ -1,9 +1,9 @@
 +++
 date = "2016-08-19T18:29:11-07:00"
-draft = true
+draft = false
 title = "Bulding infrastructure bot"
 
-tags = [ "hugo", "asset", "perf" ]
+tags = [ "infrastructure", "automation", "slack", "bot" ]
 
 description = "Why do we have to login to the VPN to view server infrastrucure status, or open NewRelic app? Let's build a bot that can answer our question about server stats, asking question about server cost, traffic..."
 img = "bot.jpg"
