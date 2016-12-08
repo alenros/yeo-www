@@ -3,7 +3,13 @@
   
   <url>
     <loc>https://yeo.space/</loc>
+    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yeo.space/blog/infrastructure-bot/</loc>
+    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
   </url>
   
 </urlset>
