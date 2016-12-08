@@ -24,6 +24,10 @@ footer h1, footer h2, footer h3, footer h4  {
   color: rgba(229,229,229,0.6)
 }
 
+footer p {
+  margin: 0 10px 0 0;
+}
+
 footer ul {
   width: 305px;
   margin: 0 auto; }
@@ -51,7 +55,6 @@ i {
 
 p {
   font-family: "Lato", sans-serif;
-  margin: 0;
 }
 
 h1, h2, h3, h4 {
