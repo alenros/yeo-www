@@ -1,25 +1,21 @@
 {{ partial "header.html" . }}
 
-<section class="wrapper">
+<section class="container">
 
-<div>
-  <h1 id="title">{{ .Title }}</h1>
-  <p>
-  These are my product. Buying any of these item help me put food on the table.
-  </p>
+  <h1 >{{ .Title }}</h1>
 
-  <ul id="list">
+  <ul class="blog">
     {{ range .Data.Pages }}
-    <h4>
-      <span><a href="{{ .Permalink }}">{{ .Title }}</a> </span>
-    </h4>
-    <p>
-    Release on: 
-    <time class="pull-right post-list">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>&nbsp;
-    </p>
+    <li class="blog__entry">
+      <h4>
+        <span><a href="{{ .Permalink }}">{{ .Title }}</a> </span>
+      </h4>
+      <p class="blog__desc">
+        Published at: <time class="pull-right post-list">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>&nbsp;
+      </p>
+    </li>
     {{ end }}
   </ul>
-</div>
 
 </section>
 

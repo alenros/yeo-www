@@ -1,26 +1,26 @@
 {{ partial "header.html" . }}
 
-<section id="blog" class="blog">
-  <div class="container">
-    <div class="row blog">
-      <h1 id="title">
-        <span><a href="{{ .Permalink }}">{{ .Title }}</a> </span>
-      </h1>
+<div class="container">
+  <section id="blog" class="blog">
+  <div class="row blog">
+    <h1 id="title">
+      <span><a href="{{ .Permalink }}">{{ .Title }}</a> </span>
+    </h1>
 
-      <p>
-      <a href="#">{{ .Params.author }}</a> -&nbsp;
-      <time class="post-list">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>&nbsp;
-      <!-- {{ delimit .Params.tags ", " }} -->
-      {{ range .Params.tags }}
-      <a href="/tags/{{ . | urlize }}">{{ . }}</a>
-      {{ end }}
-      </p>
+    <p>
+    <a href="#">{{ .Params.author }}</a> -&nbsp;
+    <time class="post-list">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>&nbsp;
+    <!-- {{ delimit .Params.tags ", " }} -->
+    {{ range .Params.tags }}
+    <a href="/tags/{{ . | urlize }}">{{ . }}</a>
+    {{ end }}
+    </p>
 
-      <section>
-      {{ .Content }}
-      </section>
-    </div>
+    <section>
+    {{ .Content }}
+    </section>
   </div>
-</section>
+  </section>
+</div>
 
 {{ partial "footer.html" . }}
