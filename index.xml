@@ -6,7 +6,126 @@
     <description>Recent content on Yeo Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 19 Aug 2016 18:29:11 -0700</lastBuildDate>
     <atom:link href="https://yeo.space/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bulding infrastructure bot</title>
+      <link>https://yeo.space/blog/infrastructure-bot/</link>
+      <pubDate>Fri, 19 Aug 2016 18:29:11 -0700</pubDate>
+      
+      <guid>https://yeo.space/blog/infrastructure-bot/</guid>
+      <description>
+
+&lt;p&gt;Using bot as a tool to trigger command is very convenience. We don&amp;rsquo;t
+have to get on the VPN, SSH into servers and run commands. By using a
+bot like an UI, it&amp;rsquo;s quick to get something. If yon are on the road and
+want o check some status, it&amp;rsquo;s faster to type something itno Slack. It
+does, however, raise some concern about security. Hence we can limit to
+some commands to only allow from some users. But that&amp;rsquo;s out of scope of
+this post.&lt;/p&gt;
+
+&lt;p&gt;In this, we are introducing &lt;a href=&#34;https://github.com/NotyIm/bot-slack&#34;&gt;Infra
+Bot&lt;/a&gt;, a tool that let you define
+command and run from Slack. It&amp;rsquo;s written in Elixir so you will need
+Elixir. Simply follow
+&lt;a href=&#34;http://elixir-lang.org/install.html#unix-and-unix-like&#34;&gt;this&lt;/a&gt; to
+install it.&lt;/p&gt;
+
+&lt;p&gt;After you are done, let&amp;rsquo;s deploy our bot.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-slack-credential:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Getting slack credential&lt;/h2&gt;
+
+&lt;p&gt;Create a slack app to get client and secret token. Make sure you enable
+the bot and interactive button. The url of its is
+[domain_where_you_deploy_bot]/button&lt;/p&gt;
+
+&lt;h2 id=&#34;setting-environment-variables:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Setting environment variables&lt;/h2&gt;
+
+&lt;p&gt;The bot needs those:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export SLACK_CLIENT_ID=id
+export SLACK_CLIENT_SECRET=secret
+export BOT_PREFIX=[trigger_word]
+export MDBDB=mysqldb_name
+export MDBHOST=db_host
+export MDBUSER=root
+export MDBPASSWORD=root
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;strong&gt;BOT_PREFIX&lt;/strong&gt; is a trigger word so when you type &lt;code&gt;bot do this for
+me&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;define-command:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Define command&lt;/h2&gt;
+
+&lt;p&gt;Create a file call &lt;code&gt;config/command.exs&lt;/code&gt; with this content:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;use Mix.Config
+
+config :infra_bot, :command_runner,
+  [
+    {&amp;quot;my_action&amp;quot;,
+      %{
+        trigger: ~r/^vinh (.*)/,
+        regex:
+~r/vinh\s*(?&amp;lt;resource&amp;gt;.*)(for|of|on)\s*(?&amp;lt;client&amp;gt;[^\s]+)/,
+        command: %{
+          sub_action: %{
+            text: &amp;quot;sub action&amp;quot;,
+            cmd: &amp;quot;script_to_be_run&amp;quot;,
+            args: [&amp;quot;client&amp;quot;, &amp;quot;resource&amp;quot;],
+          },
+        }
+      }
+    },
+
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can define a regex using capture name and pass them via &lt;strong&gt;args&lt;/strong&gt;
+parameters. When you send a message with that pattern, the bot parse it
+to get parameter, and invoke the script in command with passing
+parameters.&lt;/p&gt;
+
+&lt;p&gt;Example, I can have this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;use Mix.Config
+
+config :infra_bot, :command_runner,
+  [
+    {&amp;quot;server_metric&amp;quot;,
+      %{
+        trigger: ~r/^bot (.*)/,
+        regex:
+~r/bot\s*(?&amp;lt;metric&amp;gt;.*)(for|of|on)\s*(?&amp;lt;server&amp;gt;[^\s]+)/,
+        command: %{
+          sub_action: %{
+            text: &amp;quot;shutdown &amp;quot;,
+            cmd: &amp;quot;&amp;quot;,
+            args: [&amp;quot;client&amp;quot;, &amp;quot;resource&amp;quot;],
+          },
+        }
+      }
+    },
+
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;run-the-app:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Run the app&lt;/h2&gt;
+
+&lt;p&gt;After configuring and have setting ready, you can run it like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;source ./env  # to get env var
+MIX_ENV=production mix phoenix.server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;connect-the-bot:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Connect the bot&lt;/h2&gt;
+
+&lt;p&gt;Go to [your_domain]:[port]/auth/1, you will be redirec to slack to
+install your own bot. Once that&amp;rsquo;s done, you can go to slack and should
+see it online. Now, command it to do thing&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
