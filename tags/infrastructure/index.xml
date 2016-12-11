@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Infrastructure on Yeo Space</title>
-    <link>https://yeo.space/tags/infrastructure/</link>
+    <link>https://yeo.space/tags/infrastructure/index.xml</link>
     <description>Recent content in Infrastructure on Yeo Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Aug 2016 18:29:11 -0700</lastBuildDate>
     <atom:link href="https://yeo.space/tags/infrastructure/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -34,13 +33,13 @@ install it.&lt;/p&gt;
 
 &lt;p&gt;After you are done, let&amp;rsquo;s deploy our bot.&lt;/p&gt;
 
-&lt;h2 id=&#34;getting-slack-credential:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Getting slack credential&lt;/h2&gt;
+&lt;h2 id=&#34;getting-slack-credential&#34;&gt;Getting slack credential&lt;/h2&gt;
 
 &lt;p&gt;Create a slack app to get client and secret token. Make sure you enable
 the bot and interactive button. The url of its is
 [domain_where_you_deploy_bot]/button&lt;/p&gt;
 
-&lt;h2 id=&#34;setting-environment-variables:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Setting environment variables&lt;/h2&gt;
+&lt;h2 id=&#34;setting-environment-variables&#34;&gt;Setting environment variables&lt;/h2&gt;
 
 &lt;p&gt;The bot needs those:&lt;/p&gt;
 
@@ -56,7 +55,7 @@ export MDBPASSWORD=root
 &lt;p&gt;The &lt;strong&gt;BOT_PREFIX&lt;/strong&gt; is a trigger word so when you type &lt;code&gt;bot do this for
 me&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;define-command:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Define command&lt;/h2&gt;
+&lt;h2 id=&#34;define-command&#34;&gt;Define command&lt;/h2&gt;
 
 &lt;p&gt;Create a file call &lt;code&gt;config/command.exs&lt;/code&gt; with this content:&lt;/p&gt;
 
@@ -111,7 +110,7 @@ config :infra_bot, :command_runner,
   ]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;run-the-app:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Run the app&lt;/h2&gt;
+&lt;h2 id=&#34;run-the-app&#34;&gt;Run the app&lt;/h2&gt;
 
 &lt;p&gt;After configuring and have setting ready, you can run it like:&lt;/p&gt;
 
@@ -119,7 +118,7 @@ config :infra_bot, :command_runner,
 MIX_ENV=production mix phoenix.server
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;connect-the-bot:67c7b4ccfb6d4b5267f221c8a0e32ca9&#34;&gt;Connect the bot&lt;/h2&gt;
+&lt;h2 id=&#34;connect-the-bot&#34;&gt;Connect the bot&lt;/h2&gt;
 
 &lt;p&gt;Go to [your_domain]:[port]/auth/1, you will be redirec to slack to
 install your own bot. Once that&amp;rsquo;s done, you can go to slack and should
