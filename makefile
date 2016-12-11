@@ -2,7 +2,7 @@ WORKDIR = $(shell pwd)
 
 CSS_DIR = public/css
 CSS_FILE = $(CSS_DIR)/style.css
-CSS_REV = main-$(shell md5 -r $(WORKDIR)/$(CSS_FILE) | awk '{print $$1}').css
+CSS_REV = style-$(shell md5 -r $(WORKDIR)/$(CSS_FILE) | awk '{print $$1}').css
 
 server:
 	hugo server --theme=yeo --buildDrafts --watch
