@@ -8,9 +8,9 @@ server:
 	hugo server --theme=yeo --buildDrafts --watch
 
 asset:
-	cp $(CSS_FILE) "$(CSS_DIR)/main-$(shell md5 -r $(CSS_FILE) | awk '{print $$1}').css"
+	cp $(CSS_FILE) "$(CSS_DIR)/style-$(shell md5 -r $(CSS_FILE) | awk '{print $$1}').css"
 	echo $(CSS_REV)
-	find public -name "*.html" -print0 | xargs -0 -I filename /bin/bash -c "echo filename; sed 's/css\/style.css/css\/$(CSS_REV)/g' filename > tmp; mv tmp filename"
+	find public -name "*.html" -print0 | xargs -0 -I filename /bin/bash -c "echo filename; sed  's/css\/style.css.*/css\/$(CSS_REV)\">/g' filename > tmp; mv tmp filename"
 
 generate:
 	hugo --theme=yeo
