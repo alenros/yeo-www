@@ -7,6 +7,9 @@ CSS_REV = style-$(shell md5 -r $(WORKDIR)/$(CSS_FILE) | awk '{print $$1}').css
 server:
 	hugo server --theme=yeo --buildDrafts --watch
 
+clean_up:
+	rm filename
+
 asset:
 	cp $(CSS_FILE) "$(CSS_DIR)/style-$(shell md5 -r $(CSS_FILE) | awk '{print $$1}').css"
 	echo $(CSS_REV)
@@ -15,7 +18,7 @@ asset:
 generate:
 	hugo --theme=yeo
 
-build: generate asset
+build: generate asset clean_up
 
 build_draft:
 	hugo --theme=yeo --buildDrafts
