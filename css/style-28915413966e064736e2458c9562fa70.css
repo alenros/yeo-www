@@ -1,0 +1,140 @@
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #000000;
+  font-size: 1em;
+  font-weight: 300; }
+
+.wrapper {
+  margin: 100px 0;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+footer {
+  text-align: left;
+  background: #393939;
+  padding: 0;
+  font-size: 1em;
+  color: rgba(229,229,229,0.6); }
+
+footer h1, footer h2, footer h3, footer h4  {
+  color: rgba(229,229,229,0.6)
+}
+
+footer p {
+  margin: 0 10px 0 0;
+}
+
+footer ul {
+  width: 305px;
+  margin: 0 auto; }
+footer li {
+  margin-right: 10px; }
+  footer li:last-child {
+    margin-right: 0px; }
+footer a {
+  color: rgba(229,229,229,0.6)
+}
+
+footer section {
+  max-width: 1080px;
+}
+
+.blog__entry {
+  margin: 5px 0;
+}
+.blog__entry .blog__desc {
+  font-size: 0.9em;
+}
+
+.home__intro {
+  margin: 0 500px 0 0;
+}
+
+@media (max-width: 600px) {
+  .home__intro {
+    margin: 0
+  }
+  
+}
+
+i {
+  color: #959595; }
+
+p {
+  font-family: "Lato", sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #000000;
+  font-weight: 300; }
+
+a { color: #FF7473; }
+  a i {
+    color: #111; }
+  a:hover {
+    text-decoration: underline; }
+
+input, textarea {
+  font-weight: 300;
+  font-style: italic; }
+
+h1 {
+  font-size: 48px; }
+
+h2 {
+  font-size: 40px; }
+
+h3 {
+  font-size: 30px; }
+
+h4 {
+  font-size: 20px; }
+
+i {
+  font-size: 24px;
+  margin-right: 10px; }
+
+p, h1, h2, h3 {
+  line-height: 1.5; }
+
+article {
+  padding: 0px; }
+
+img {
+  display: block;
+  width: 100%; }
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px; }
+
+@media all and (max-width: 767px) {
+  .flex-direction-nav {
+    display: none; } }
+
+section {
+  padding: 65px 0px 90px 0px; }
+  section h2 {
+    text-align: center;
+    padding: 0px 0px 0px;
+    text-transform: uppercase; }
+  section .sec-header .sub-title {
+    text-align: center; }
+
+section.no-padding {
+  padding: 0px; }
+
+section.alt {
+  background: #393939;
+  color: #FFFFFF; }
+  section.alt i, section.alt p, section.alt h1, section.alt h2, section.alt h3, section.alt h4, section.alt h3.sub-title {
+    color: #FFFFFF; }
+  section.alt .sep {
+    background: #FFFFFF; }
+/*# sourceMappingURL=style.css.map */
