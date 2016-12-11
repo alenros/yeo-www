@@ -2,14 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yeo.space/</loc>
+    <loc>https://yeo.space/blog/infrastructure-bot/</loc>
+    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yeo.space/tags/automation/</loc>
     <lastmod>2016-08-19T18:29:11-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yeo.space/blog/infrastructure-bot/</loc>
+    <loc>https://yeo.space/blog/</loc>
     <lastmod>2016-08-19T18:29:11-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yeo.space/tags/bot/</loc>
+    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yeo.space/tags/infrastructure/</loc>
+    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yeo.space/tags/slack/</loc>
+    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yeo.space/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yeo.space/</loc>
+    <lastmod>2016-08-19T18:29:11-07:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
