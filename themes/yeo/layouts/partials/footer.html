@@ -13,9 +13,9 @@
       <div class="column column-25">
         <h3>Service</h3>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="services/devops">Infrastructure</a></li>
-          <li><a href="services/app">Web application</a></li>
-          <li><a href="services/apple">iOS, macOS development</a></li>
+          {{ range where .Data.Pages "Section" "service" }}
+          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          {{ end }}
         </ul>
       </div>
 
