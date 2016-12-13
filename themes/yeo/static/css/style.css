@@ -54,11 +54,16 @@ footer section {
   margin: 0 500px 0 0;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 1000px) {
   .home__intro {
-    margin: 0
+    margin: 0;
   }
-  
+}
+
+@media screen (min-width: 1000px) {
+  .home__intro {
+    margin: 0;
+  }
 }
 
 i {
