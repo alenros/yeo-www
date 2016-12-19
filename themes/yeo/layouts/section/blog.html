@@ -7,7 +7,7 @@
   <ul class="blog">
     {{ range .Data.Pages }}
     <li class="blog__entry">
-      <h4>
+      <h4 class="blog__title">
         <span><a href="{{ .Permalink }}">{{ .Title }}</a> </span>
       </h4>
       <p class="blog__desc">

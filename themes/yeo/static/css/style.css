@@ -46,8 +46,13 @@ footer section {
 .blog__entry {
   margin: 5px 0;
 }
+.blog__title {
+  margin: 0;
+  padding: 0;
+}
 .blog__entry .blog__desc {
   font-size: 0.9em;
+  margin: 0;
 }
 
 .home__intro {
