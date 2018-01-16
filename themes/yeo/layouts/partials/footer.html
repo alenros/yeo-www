@@ -1,8 +1,9 @@
 </main>
+
 <footer class="footer">
   <div class="container">
-  <section class="flex four">
-      <div class="column column-25">
+    <section class="columns">
+      <div class="column col-3">
         <h3>Yeo Space</h3>
         <p>
         We build reliable infrastructure, use comprehensive in-house tools to help
@@ -10,7 +11,7 @@
         </p>
       </div>
 
-      <div class="column column-25">
+      <div class="column col-3">
         <h3>Service</h3>
         <ul class="nav navbar-nav navbar-right">
           {{ range where .Data.Pages "Section" "service" }}
@@ -19,7 +20,7 @@
         </ul>
       </div>
 
-      <div class="column column-25">
+      <div class="column col-3">
         <h3>Start a project</h3>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="mailto:hello@yeo.space?subject=I would like to start a project">Development</a></li>
@@ -27,12 +28,12 @@
         </ul>
       </div>
 
-      <div class="column column-25">
+      <div class="column col-3">
         <h3>Contact me</h3>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="mailto:hello@yeo.space?subject=Hey, just some quick catchup">Hello</a></li>
           <li><a href="https://twitter.com/kureikain">Twitter</a></li>
-          <li><a href="https://github.com/yeospace">Open source</a></li>
+          <li><a href="https://github.com/yeo">Open source</a></li>
         </ul>
       </div>
     </section>

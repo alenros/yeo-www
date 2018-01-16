@@ -83,7 +83,7 @@ h1, h2, h3, h4 {
   color: #000000;
   font-weight: 300; }
 
-a { color: #FF7473; }
+a, h1, h2, h3, h4 { color: #FF7473; }
   a i {
     color: #111; }
   a:hover {

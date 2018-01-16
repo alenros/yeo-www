@@ -1,10 +1,53 @@
 {{ partial "header.html" . }}
 
 <div class="container">
-<div class="flex">
+<div id="overview" class="grid-hero">
   {{ if eq .Title .Site.Title }}
   <div class="home__intro">
-    <h2>Yeo Space</h2>
+    <h1>Yeo Space</h1>
+
+    <h3>Open Source/Online service by Vinh</h3>
+
+    <p>
+    During my engagement with companies that I do consulting service for, I realized a need of hosted service for small and medium business/company. I extract these out and use YeoSpace as directory hub for these services. All of these pieces are 100% open source as well and I do consulting service to run these on your infrastructure or hosted by YeoSpace.
+    </p>
+
+    <h3>The YeoSpace network</h3>
+
+    <section class="columns">
+			<div class="column col-4 col-xs-12">
+          <div class="card text-center">
+            <div class="card-header">
+              <span class="card-title"><a href="https://betterdev.link">BetterDev</a></span>
+            </div>
+            <div class="card-body">
+							A curated weekly link of development resource
+            </div>
+          </div>
+      </div>
+
+			<div class="column col-4 col-xs-12">
+          <div class="card text-center">
+            <div class="card-header">
+              <span class="card-title"><a href="https://keybase.yeo.space">Keybase.Pub</a></span>
+            </div>
+            <div class="card-body">
+							Enable you to quickly serve keybase pub site with your own domain and auto provision SSL
+            </div>
+          </div>
+      </div>
+
+			<div class="column col-4 col-xs-12">
+          <div class="card text-center">
+            <div class="card-header">
+              <span class="card-title"><a href="https://github.com/yeo/bewell">Bewell</a></span>
+            </div>
+            <div class="card-body">
+							Track your health and find similar symtomp in community
+            </div>
+          </div>
+      </div>
+		</section>
 
     <p>
     I'm doing DevOps and Development consultant services. I have a wide range of experience design and manage infrastructure on AWS or on-premise system. I'm also pretty good at programming, you can check my <a href="//github.com/kureikain">github</a> or resume. I can work and pick up new technologies pretty quick. I also <a href="/blog">write</a> about <a href="/blog">technolgoy</a>.
