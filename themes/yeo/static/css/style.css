@@ -56,18 +56,18 @@ footer section {
 }
 
 .home__intro {
-  margin: 0 500px 0 0;
+  margin: 100px 0 0 0;
 }
 
 @media (min-width: 1000px) {
   .home__intro {
-    margin: 0;
+    margin: 100px 0 0 0;
   }
 }
 
 @media screen (min-width: 1000px) {
   .home__intro {
-    margin: 0;
+    margin: 100px 0 0 0;
   }
 }
 
@@ -147,4 +147,7 @@ section.alt {
     color: #FFFFFF; }
   section.alt .sep {
     background: #FFFFFF; }
-/*# sourceMappingURL=style.css.map */
+
+.services {
+  margin: 100px 0 0 50px;
+}
