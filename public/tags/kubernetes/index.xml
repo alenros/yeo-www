@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Yeo Space</title>
+    <link>https://yeo.space/tags/kubernetes/index.xml</link>
+    <description>Recent content in Kubernetes on Yeo Space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://yeo.space/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Use minikube for local kubernetes development</title>
+      <link>https://yeo.space/blog/use-minikube-for-local-kubernetes-development/</link>
+      <pubDate>Tue, 20 Dec 2016 09:26:18 -0800</pubDate>
+      
+      <guid>https://yeo.space/blog/use-minikube-for-local-kubernetes-development/</guid>
+      <description>&lt;p&gt;Install kubernetes is quite complex and people usually ops to use the
+automation tool that bootstrap whole cluster on a cloud provider.
+Recently kubenetes introduce [minikube] allow us do the same but on
+local computer. This tool helps us play around with kubernetes easily.&lt;/p&gt;
+
+&lt;p&gt;To practice, let&amp;rsquo;s use minukube to develop a small application with
+these features:&lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;We will use these technology:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ArangoDB&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

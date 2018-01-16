@@ -6,8 +6,123 @@
     <description>Recent content in Blogs on Yeo Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Aug 2016 18:29:11 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 20 Dec 2016 09:26:18 -0800</lastBuildDate>
     <atom:link href="https://yeo.space/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Use minikube for local kubernetes development</title>
+      <link>https://yeo.space/blog/use-minikube-for-local-kubernetes-development/</link>
+      <pubDate>Tue, 20 Dec 2016 09:26:18 -0800</pubDate>
+      
+      <guid>https://yeo.space/blog/use-minikube-for-local-kubernetes-development/</guid>
+      <description>&lt;p&gt;Install kubernetes is quite complex and people usually ops to use the
+automation tool that bootstrap whole cluster on a cloud provider.
+Recently kubenetes introduce [minikube] allow us do the same but on
+local computer. This tool helps us play around with kubernetes easily.&lt;/p&gt;
+
+&lt;p&gt;To practice, let&amp;rsquo;s use minukube to develop a small application with
+these features:&lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;We will use these technology:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ArangoDB&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Building your own APT package repository</title>
+      <link>https://yeo.space/blog/building-your-own-APT-package-repository/</link>
+      <pubDate>Sun, 21 Aug 2016 18:15:36 -0700</pubDate>
+      
+      <guid>https://yeo.space/blog/building-your-own-APT-package-repository/</guid>
+      <description>&lt;p&gt;description = &amp;ldquo;Let&amp;rsquo;s go over creating your own apt repository so that people can pull and install software from it&amp;rdquo;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>free ssl for private ip</title>
+      <link>https://yeo.space/blog/free-ssl-for-private-ip/</link>
+      <pubDate>Sat, 20 Aug 2016 20:19:26 -0700</pubDate>
+      
+      <guid>https://yeo.space/blog/free-ssl-for-private-ip/</guid>
+      <description>
+
+&lt;p&gt;Setting up Let&amp;rsquo;sencrypt is easier if server is on public network? How
+can we do that when it&amp;rsquo;s private server but we still needs TLS for it,
+like a MongoDB cluster, or an internal dashboard behind VPN.&lt;/p&gt;
+
+&lt;p&gt;Well, DNS come to rescue. The idea is that now instead of using a web
+server for Letsencrypt challenge, we will use DNS txt record. Example,
+to verify &lt;code&gt;domain.com&lt;/code&gt;, a TXT record for &lt;code&gt;_acme_challenge.domain.com&lt;/code&gt;
+with challenge response is created.&lt;/p&gt;
+
+&lt;p&gt;To make thing even easier, &lt;a href=&#34;github.com/xenolf/lego&#34;&gt;lego&lt;/a&gt; is a
+let&amp;rsquo;sencrypt client written in Go lang so we only need to download the
+binary and execute it withou installing on Python stuff like official
+client.&lt;/p&gt;
+
+&lt;h2 id=&#34;1-install-lego&#34;&gt;1. Install lego&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://github.com/xenolf/lego/releases/download/v0.3.1/lego_linux_amd64.tar.xz
+-o lego.tar.xz
+tar xvfJ lego.tar.xz
+mv lego /usr/local/bin/
+chmod 0755 /usr/local/bin/lego
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-create-route53-policy&#34;&gt;2. Create Route53 policy&lt;/h2&gt;
+
+&lt;p&gt;We can use AWS API Key and Secret but this means we need to maintain and
+pass they key somehow. Using IAM role is way easier. Simply createa an
+IAM role with this policy:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+    &amp;quot;Statement&amp;quot;: [
+        {
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;route53:GetChange&amp;quot;,
+                &amp;quot;route53:ListHostedZonesByName&amp;quot;
+            ],
+            &amp;quot;Resource&amp;quot;: [
+                &amp;quot;*&amp;quot;
+            ]
+        },
+        {
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Action&amp;quot;: [
+                &amp;quot;route53:ChangeResourceRecordSets&amp;quot;
+            ],
+            &amp;quot;Resource&amp;quot;: [
+                &amp;quot;arn:aws:route53:::hostedzone/&amp;lt;INSERT_YOUR_HOSTED_ZONE_ID_HERE&amp;gt;&amp;quot;
+            ]
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-cert&#34;&gt;Create cert&lt;/h2&gt;
+
+&lt;p&gt;On ec2 instance, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lego --email=&amp;quot;foo@bar.com&amp;quot; --domains=&amp;quot;example.com&amp;quot; --dns=&amp;quot;route53&amp;quot; run
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will create a private key and cert in &lt;code&gt;.lego&lt;/code&gt; directory in current working directory.&lt;/p&gt;
+
+&lt;h2 id=&#34;renew&#34;&gt;Renew&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;lego --email=&amp;quot;foo@bar.com&amp;quot; --domains=&amp;quot;example.com&amp;quot; --dns=&amp;quot;route53&amp;quot; renew
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can put the renew command in &lt;code&gt;cron&lt;/code&gt; to renew every 2 months&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Bulding infrastructure bot</title>
