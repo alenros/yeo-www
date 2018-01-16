@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Services on Yeo Space</title>
+    <link>https://yeo.space/service/index.xml</link>
+    <description>Recent content in Services on Yeo Space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Dec 2016 12:43:07 -0800</lastBuildDate>
+    <atom:link href="https://yeo.space/service/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>iOS, macOS development</title>
+      <link>https://yeo.space/service/appledev/</link>
+      <pubDate>Sun, 11 Dec 2016 12:43:07 -0800</pubDate>
+      
+      <guid>https://yeo.space/service/appledev/</guid>
+      <description>
+
+&lt;h2 id=&#34;apple-development&#34;&gt;Apple development&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;m interested in programming language design. That&amp;rsquo;s why I really like
+Swift. I used to think the day of creating new programing language is
+over when we have to use thing was created 20 years ago. The Go lang,
+Rust, Elixir came out and it&amp;rsquo;s prove how wrong am I.&lt;/p&gt;
+
+&lt;p&gt;Swift is a new language that&amp;rsquo;s I like a lot. Hence I want to get into
+iOS, macOS development.&lt;/p&gt;
+
+&lt;p&gt;I have ship some iOS app and macOS app such as&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web application</title>
+      <link>https://yeo.space/service/webapp/</link>
+      <pubDate>Sun, 11 Dec 2016 12:42:59 -0800</pubDate>
+      
+      <guid>https://yeo.space/service/webapp/</guid>
+      <description>
+
+&lt;h2 id=&#34;web-application-development-service&#34;&gt;Web Application development service&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Infrastructure</title>
+      <link>https://yeo.space/service/infrastructure/</link>
+      <pubDate>Sun, 11 Dec 2016 12:42:52 -0800</pubDate>
+      
+      <guid>https://yeo.space/service/infrastructure/</guid>
+      <description>
+
+&lt;h2 id=&#34;devops-consulting-service&#34;&gt;DevOps consulting service&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

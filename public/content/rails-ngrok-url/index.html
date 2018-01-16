@@ -42,33 +42,40 @@
 <main class="section section-hero bg-gray">
 
 
-<section class="wrapper">
-
-<div>
-  <h1 id="title">Slack</h1>
-  <ul id="list">
-    
-      <h4>
-        <span><a href="https://yeo.space/blog/infrastructure-bot/">Bulding infrastructure bot</a> </span>
-      </h4>
+<section>
+  <div class="container">
+    <div class="row blog">
+      <h1 id="title">
+        <span><a href="https://yeo.space/content/rails-ngrok-url/">rails ngrok url</a> </span>
+      </h1>
       <p>
-        <a href="/">Vinh</a> -&nbsp;
-        <time class="pull-right post-list">Fri, Aug 19, 2016</time>&nbsp;
-        
-        
-          <a href="/tags/infrastructure">infrastructure</a>
-        
-          <a href="/tags/automation">automation</a>
-        
-          <a href="/tags/slack">slack</a>
-        
-          <a href="/tags/bot">bot</a>
-        
+      <a href="#"></a> -&nbsp;
+      <time class="post-list">Sat, Jan 7, 2017</time>&nbsp;
+      
+      
+      <a href="/tags/rails">Rails</a>
+      
+      <a href="/tags/devops">DevOps</a>
+      
       </p>
-    
-  </ul>
-</div>
 
+      <section>
+      <p>During development of <code>noty.im</code>, we have to test out Twilio feature.
+This mean Twilio server has to be able to reach our app. We love and use
+<code>ngrok</code> but we cannot persist the domain.</p>
+
+<p>So here is my simple setup to make this work</p>
+
+<ol>
+<li><p>I set a environment var in our <code>.env</code> file to specifiy the address</p></li>
+
+<li><p>I then customize how Rails boot in development mode to spawan <code>ngrok</code>
+and recording the address then update the .env file</p></li>
+</ol>
+
+      </section>
+    </div>
+  </div>
 </section>
 
 </main>

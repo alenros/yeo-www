@@ -6,8 +6,48 @@
     <description>Recent content in Blogs on Yeo Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Dec 2016 09:26:18 -0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Jan 2017 00:01:19 -0800</lastBuildDate>
     <atom:link href="https://yeo.space/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>mongodb sync index</title>
+      <link>https://yeo.space/blog/mongodb-sync-index/</link>
+      <pubDate>Wed, 04 Jan 2017 00:01:19 -0800</pubDate>
+      
+      <guid>https://yeo.space/blog/mongodb-sync-index/</guid>
+      <description>
+
+&lt;p&gt;When operating MongoDB at scale, I found mysef have to add/remove
+replica a lot. One thing that always bug me is the index. I used Mongoid
+as my ODM, so once the index is defined, creating it is easily with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake db:mongoid:create_indexes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, given my  experience, lots of time the index wasn&amp;rsquo;t created properly.
+It&amp;rsquo;s maybe because old version of gem that I used. But that&amp;rsquo;s in the
+point of this post.&lt;/p&gt;
+
+&lt;p&gt;In this article, I want to show you how we can manually sync index from
+primary. When we add a new replica to replica set, the single index is
+created automatically but the compound index weren&amp;rsquo;t.&lt;/p&gt;
+
+&lt;p&gt;The mothod that I used is very simple. It go over the source database,
+read the index, and attempt to re-create them in the secondary. Here is
+the procedure.&lt;/p&gt;
+
+&lt;h2 id=&#34;remove-the-secondary-from-replicaset&#34;&gt;Remove the secondary from replicaset&lt;/h2&gt;
+
+&lt;p&gt;This is necessary because we cannot write to a secondary.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-the-index&#34;&gt;Create the index&lt;/h2&gt;
+
+&lt;h2 id=&#34;add-the-node-back-to-replica-set&#34;&gt;Add the node back to replica set&lt;/h2&gt;
+
+&lt;p&gt;Finally now the indexes are in-sync with master and any new index will
+be replicated to secondary as well&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Use minikube for local kubernetes development</title>

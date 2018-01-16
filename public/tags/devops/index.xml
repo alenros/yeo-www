@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on Yeo Space</title>
+    <link>https://yeo.space/tags/devops/index.xml</link>
+    <description>Recent content in Devops on Yeo Space</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://yeo.space/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>rails ngrok url</title>
+      <link>https://yeo.space/content/rails-ngrok-url/</link>
+      <pubDate>Sat, 07 Jan 2017 23:25:55 -0800</pubDate>
+      
+      <guid>https://yeo.space/content/rails-ngrok-url/</guid>
+      <description>&lt;p&gt;During development of &lt;code&gt;noty.im&lt;/code&gt;, we have to test out Twilio feature.
+This mean Twilio server has to be able to reach our app. We love and use
+&lt;code&gt;ngrok&lt;/code&gt; but we cannot persist the domain.&lt;/p&gt;
+
+&lt;p&gt;So here is my simple setup to make this work&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;I set a environment var in our &lt;code&gt;.env&lt;/code&gt; file to specifiy the address&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I then customize how Rails boot in development mode to spawan &lt;code&gt;ngrok&lt;/code&gt;
+and recording the address then update the .env file&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,8 +6,69 @@
     <description>Recent content on Yeo Space</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Dec 2016 09:26:18 -0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jan 2017 23:25:55 -0800</lastBuildDate>
     <atom:link href="https://yeo.space/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>rails ngrok url</title>
+      <link>https://yeo.space/content/rails-ngrok-url/</link>
+      <pubDate>Sat, 07 Jan 2017 23:25:55 -0800</pubDate>
+      
+      <guid>https://yeo.space/content/rails-ngrok-url/</guid>
+      <description>&lt;p&gt;During development of &lt;code&gt;noty.im&lt;/code&gt;, we have to test out Twilio feature.
+This mean Twilio server has to be able to reach our app. We love and use
+&lt;code&gt;ngrok&lt;/code&gt; but we cannot persist the domain.&lt;/p&gt;
+
+&lt;p&gt;So here is my simple setup to make this work&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;I set a environment var in our &lt;code&gt;.env&lt;/code&gt; file to specifiy the address&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I then customize how Rails boot in development mode to spawan &lt;code&gt;ngrok&lt;/code&gt;
+and recording the address then update the .env file&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mongodb sync index</title>
+      <link>https://yeo.space/blog/mongodb-sync-index/</link>
+      <pubDate>Wed, 04 Jan 2017 00:01:19 -0800</pubDate>
+      
+      <guid>https://yeo.space/blog/mongodb-sync-index/</guid>
+      <description>
+
+&lt;p&gt;When operating MongoDB at scale, I found mysef have to add/remove
+replica a lot. One thing that always bug me is the index. I used Mongoid
+as my ODM, so once the index is defined, creating it is easily with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rake db:mongoid:create_indexes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, given my  experience, lots of time the index wasn&amp;rsquo;t created properly.
+It&amp;rsquo;s maybe because old version of gem that I used. But that&amp;rsquo;s in the
+point of this post.&lt;/p&gt;
+
+&lt;p&gt;In this article, I want to show you how we can manually sync index from
+primary. When we add a new replica to replica set, the single index is
+created automatically but the compound index weren&amp;rsquo;t.&lt;/p&gt;
+
+&lt;p&gt;The mothod that I used is very simple. It go over the source database,
+read the index, and attempt to re-create them in the secondary. Here is
+the procedure.&lt;/p&gt;
+
+&lt;h2 id=&#34;remove-the-secondary-from-replicaset&#34;&gt;Remove the secondary from replicaset&lt;/h2&gt;
+
+&lt;p&gt;This is necessary because we cannot write to a secondary.&lt;/p&gt;
+
+&lt;h2 id=&#34;create-the-index&#34;&gt;Create the index&lt;/h2&gt;
+
+&lt;h2 id=&#34;add-the-node-back-to-replica-set&#34;&gt;Add the node back to replica set&lt;/h2&gt;
+
+&lt;p&gt;Finally now the indexes are in-sync with master and any new index will
+be replicated to secondary as well&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Use minikube for local kubernetes development</title>
@@ -30,6 +91,52 @@ these features:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ArangoDB&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>iOS, macOS development</title>
+      <link>https://yeo.space/service/appledev/</link>
+      <pubDate>Sun, 11 Dec 2016 12:43:07 -0800</pubDate>
+      
+      <guid>https://yeo.space/service/appledev/</guid>
+      <description>
+
+&lt;h2 id=&#34;apple-development&#34;&gt;Apple development&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;m interested in programming language design. That&amp;rsquo;s why I really like
+Swift. I used to think the day of creating new programing language is
+over when we have to use thing was created 20 years ago. The Go lang,
+Rust, Elixir came out and it&amp;rsquo;s prove how wrong am I.&lt;/p&gt;
+
+&lt;p&gt;Swift is a new language that&amp;rsquo;s I like a lot. Hence I want to get into
+iOS, macOS development.&lt;/p&gt;
+
+&lt;p&gt;I have ship some iOS app and macOS app such as&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web application</title>
+      <link>https://yeo.space/service/webapp/</link>
+      <pubDate>Sun, 11 Dec 2016 12:42:59 -0800</pubDate>
+      
+      <guid>https://yeo.space/service/webapp/</guid>
+      <description>
+
+&lt;h2 id=&#34;web-application-development-service&#34;&gt;Web Application development service&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Infrastructure</title>
+      <link>https://yeo.space/service/infrastructure/</link>
+      <pubDate>Sun, 11 Dec 2016 12:42:52 -0800</pubDate>
+      
+      <guid>https://yeo.space/service/infrastructure/</guid>
+      <description>
+
+&lt;h2 id=&#34;devops-consulting-service&#34;&gt;DevOps consulting service&lt;/h2&gt;
 </description>
     </item>
     

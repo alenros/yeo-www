@@ -42,34 +42,59 @@
 <main class="section section-hero bg-gray">
 
 
-<section class="wrapper">
+<div class="container">
+  <section id="blog" class="blog">
+  <div class="row blog">
+    <h1 id="title">
+      <span><a href="https://yeo.space/blog/mongodb-sync-index/">mongodb sync index</a> </span>
+    </h1>
 
-<div>
-  <h1 id="title">Slack</h1>
-  <ul id="list">
+    <p>
+    <a href="#"></a> -&nbsp;
+    <time class="post-list">Wed, Jan 4, 2017</time>&nbsp;
     
-      <h4>
-        <span><a href="https://yeo.space/blog/infrastructure-bot/">Bulding infrastructure bot</a> </span>
-      </h4>
-      <p>
-        <a href="/">Vinh</a> -&nbsp;
-        <time class="pull-right post-list">Fri, Aug 19, 2016</time>&nbsp;
-        
-        
-          <a href="/tags/infrastructure">infrastructure</a>
-        
-          <a href="/tags/automation">automation</a>
-        
-          <a href="/tags/slack">slack</a>
-        
-          <a href="/tags/bot">bot</a>
-        
-      </p>
     
-  </ul>
+    <a href="/tags/mongodb">MongoDB</a>
+    
+    </p>
+
+    <section>
+    
+
+<p>When operating MongoDB at scale, I found mysef have to add/remove
+replica a lot. One thing that always bug me is the index. I used Mongoid
+as my ODM, so once the index is defined, creating it is easily with:</p>
+
+<pre><code>rake db:mongoid:create_indexes
+</code></pre>
+
+<p>However, given my  experience, lots of time the index wasn&rsquo;t created properly.
+It&rsquo;s maybe because old version of gem that I used. But that&rsquo;s in the
+point of this post.</p>
+
+<p>In this article, I want to show you how we can manually sync index from
+primary. When we add a new replica to replica set, the single index is
+created automatically but the compound index weren&rsquo;t.</p>
+
+<p>The mothod that I used is very simple. It go over the source database,
+read the index, and attempt to re-create them in the secondary. Here is
+the procedure.</p>
+
+<h2 id="remove-the-secondary-from-replicaset">Remove the secondary from replicaset</h2>
+
+<p>This is necessary because we cannot write to a secondary.</p>
+
+<h2 id="create-the-index">Create the index</h2>
+
+<h2 id="add-the-node-back-to-replica-set">Add the node back to replica set</h2>
+
+<p>Finally now the indexes are in-sync with master and any new index will
+be replicated to secondary as well</p>
+
+    </section>
+  </div>
+  </section>
 </div>
-
-</section>
 
 </main>
 
