@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv=x-ua-compatible content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#f4f5f6">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f4f5f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Vinh Nguyen">
+    <meta name="description" content="Yeo Consulting Service">
+    <meta property="og:url" content="https://yeo.space/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Yeo Space | Open Source Software development and consulting.">
+    <meta property="og:description" content="I do software consulting, and contribute to open source software">
+    <meta property="og:image" content="images/thumbnail.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@axcoto">
+    <meta name="twitter:creator" content="@kureikai">
+    <meta name="twitter:title" content="Hire Yeo if you have a project">
+    <meta name="twitter:description" content="DevOps consulting(cloud or physical server), software consulting">
+    <meta name="twitter:image" content="images/thumbnail.png">
+    <title>Yeo Space</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="canonical" href="https://yeo.space/">
+    <link rel="image_src" href="images/thumbnail.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <link rel="stylesheet" href="/css/style-96a77065165ee7eabd3f8a2064ba9b06.css">
+  </head>
+  <body>
+
+<main class="section section-hero bg-gray">
+
+
+<div class="container">
+  <section id="blog" class="blog">
+  <div class="row blog">
+    <h1 id="title">
+      <span><a href="https://yeo.space/blog/free-ssl-for-private-ip/">free ssl for private ip</a> </span>
+    </h1>
+
+    <p>
+    <a href="#">vinh</a> -&nbsp;
+    <time class="post-list">Sat, Aug 20, 2016</time>&nbsp;
+    
+    
+    <a href="/tags/https">https</a>
+    
+    <a href="/tags/free">free</a>
+    
+    <a href="/tags/ssl">ssl</a>
+    
+    <a href="/tags/letsencrypt">Let&#39;sencrypt</a>
+    
+    </p>
+
+    <section>
+    
+
+<p>Setting up Let&rsquo;sencrypt is easier if server is on public network? How
+can we do that when it&rsquo;s private server but we still needs TLS for it,
+like a MongoDB cluster, or an internal dashboard behind VPN.</p>
+
+<p>Well, DNS come to rescue. The idea is that now instead of using a web
+server for Letsencrypt challenge, we will use DNS txt record. Example,
+to verify <code>domain.com</code>, a TXT record for <code>_acme_challenge.domain.com</code>
+with challenge response is created.</p>
+
+<p>To make thing even easier, <a href="github.com/xenolf/lego">lego</a> is a
+let&rsquo;sencrypt client written in Go lang so we only need to download the
+binary and execute it withou installing on Python stuff like official
+client.</p>
+
+<h2 id="1-install-lego">1. Install lego</h2>
+
+<pre><code>curl https://github.com/xenolf/lego/releases/download/v0.3.1/lego_linux_amd64.tar.xz
+-o lego.tar.xz
+tar xvfJ lego.tar.xz
+mv lego /usr/local/bin/
+chmod 0755 /usr/local/bin/lego
+</code></pre>
+
+<h2 id="2-create-route53-policy">2. Create Route53 policy</h2>
+
+<p>We can use AWS API Key and Secret but this means we need to maintain and
+pass they key somehow. Using IAM role is way easier. Simply createa an
+IAM role with this policy:</p>
+
+<pre><code>{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;route53:GetChange&quot;,
+                &quot;route53:ListHostedZonesByName&quot;
+            ],
+            &quot;Resource&quot;: [
+                &quot;*&quot;
+            ]
+        },
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;route53:ChangeResourceRecordSets&quot;
+            ],
+            &quot;Resource&quot;: [
+                &quot;arn:aws:route53:::hostedzone/&lt;INSERT_YOUR_HOSTED_ZONE_ID_HERE&gt;&quot;
+            ]
+        }
+    ]
+}
+</code></pre>
+
+<h2 id="create-cert">Create cert</h2>
+
+<p>On ec2 instance, run:</p>
+
+<pre><code>lego --email=&quot;foo@bar.com&quot; --domains=&quot;example.com&quot; --dns=&quot;route53&quot; run
+</code></pre>
+
+<p>This will create a private key and cert in <code>.lego</code> directory in current working directory.</p>
+
+<h2 id="renew">Renew</h2>
+
+<pre><code>lego --email=&quot;foo@bar.com&quot; --domains=&quot;example.com&quot; --dns=&quot;route53&quot; renew
+</code></pre>
+
+<p>We can put the renew command in <code>cron</code> to renew every 2 months</p>
+
+    </section>
+  </div>
+  </section>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <section class="columns">
+      <div class="column col-3">
+        <h3>Yeo Space</h3>
+        <p>
+        We build reliable infrastructure, use comprehensive in-house tools to help
+        you monitor and trigger self healing if possible.
+        </p>
+      </div>
+
+      <div class="column col-3">
+        <h3>Service</h3>
+        <ul class="nav navbar-nav navbar-right">
+          
+        </ul>
+      </div>
+
+      <div class="column col-3">
+        <h3>Start a project</h3>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="mailto:hello@yeo.space?subject=I would like to start a project">Development</a></li>
+          <li><a href="mailto:hello@yeo.space?subject=Hey, just some quick catchup">DevOps</a></li>
+        </ul>
+      </div>
+
+      <div class="column col-3">
+        <h3>Contact me</h3>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="mailto:hello@yeo.space?subject=Hey, just some quick catchup">Hello</a></li>
+          <li><a href="https://twitter.com/kureikain">Twitter</a></li>
+          <li><a href="https://github.com/yeo">Open source</a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</footer>
+
+    </body>
+  </html>
+

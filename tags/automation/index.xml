@@ -9,6 +9,30 @@
     <atom:link href="https://yeo.space/tags/automation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Use minikube for local kubernetes development</title>
+      <link>https://yeo.space/blog/use-minikube-for-local-kubernetes-development/</link>
+      <pubDate>Tue, 20 Dec 2016 09:26:18 -0800</pubDate>
+      
+      <guid>https://yeo.space/blog/use-minikube-for-local-kubernetes-development/</guid>
+      <description>&lt;p&gt;Install kubernetes is quite complex and people usually ops to use the
+automation tool that bootstrap whole cluster on a cloud provider.
+Recently kubenetes introduce [minikube] allow us do the same but on
+local computer. This tool helps us play around with kubernetes easily.&lt;/p&gt;
+
+&lt;p&gt;To practice, let&amp;rsquo;s use minukube to develop a small application with
+these features:&lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;
+
+&lt;p&gt;We will use these technology:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ArangoDB&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Bulding infrastructure bot</title>
       <link>https://yeo.space/blog/infrastructure-bot/</link>
       <pubDate>Fri, 19 Aug 2016 18:29:11 -0700</pubDate>
