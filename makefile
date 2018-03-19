@@ -35,4 +35,11 @@ push_subtree:
 deploy: push_subtree
 
 ssh_deploy:
-	ssh kurei@noty "bash deploy-yeo.sh"
+	ssh kurei@axcoto "bash deploy-yeo.sh"
+
+docker:
+	docker build -t yeospace/website .
+	docker push yeospace/website:latest
+
+k8s-deploy:
+	kubectl apply -f k8s/

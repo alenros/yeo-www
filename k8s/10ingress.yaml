@@ -1,0 +1,38 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: website
+  namespace: yeo
+spec:
+  selector:
+    app: website
+  ports:
+    - protocol: TCP
+      port: 80
+      name: web
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: yeo-ingress
+  annotations:
+    kubernetes.io/tls-acme: "true" # enable certificates
+    kubernetes.io/yeo.class: "nginx"
+  namespace: yeo
+spec:
+  tls: # specify domains to fetch certificates for
+  - hosts:
+    - yeo.space
+    - www.yeo.space
+    secretName: yeo-tls
+  rules:
+  - host: yeo.space
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: website
+          servicePort: web
+          servicePort: web
