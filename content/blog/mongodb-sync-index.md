@@ -2,6 +2,7 @@
 date = "2017-01-04T00:01:19-08:00"
 title = "mongodb sync index"
 draft = true
+tags = ["MongoDB"]
 
 +++
 

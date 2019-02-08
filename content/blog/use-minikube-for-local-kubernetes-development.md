@@ -3,6 +3,12 @@ date = "2016-12-20T09:26:18-08:00"
 title = "Use minikube for local kubernetes development"
 draft = false
 
+tags = [ "infrastructure", "automation", "kubernetes" ]
+
+description = "Getting start with kubenetes..."
+img = "bot.jpg"
+author = "vinh"
+
 +++
 
 Install kubernetes is quite complex and people usually ops to use the
